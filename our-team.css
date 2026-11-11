@@ -1,0 +1,166 @@
+/* =========================================
+   Our Team page — tabs, member cards, profile modal
+   Uses the site palette (--maroon / --gold / --ivory / --cream) from style.css.
+   Logical properties are used so Arabic (RTL) works without extra rules.
+   ========================================= */
+
+.subpage-main[data-page="team"] {
+  background: var(--maroon);
+  --tm-panel: color-mix(in oklab, var(--ink) 24%, var(--maroon));
+  --tm-line: color-mix(in oklab, var(--gold) 28%, transparent);
+  --tm-edge: color-mix(in oklab, var(--gold) 60%, transparent);
+  --tm-g: 14px;
+  --tm-n: 2;
+}
+.subpage-main[data-page="team"] .page-wrap { max-width: 1092px; place-items: stretch; }
+.subpage-main[data-page="team"] .tm { width: 100%; }
+.subpage-main[data-page="team"] [hidden] { display: none !important; }
+:where(.tm, .tm-modal) button { font: inherit; color: inherit; cursor: pointer; border: 0; background: none; }
+.tm :focus-visible, .tm-modal :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+/* ---------- Tabs ---------- */
+/* سهم "View Profile" (يُرسم من الـCSS، لا حاجة له في الـHTML) */
+.tm-view::after {
+  content: ""; flex: none; width: 14px; height: 14px; background: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 8h10M9 4l4 4-4 4'/%3E%3C/svg%3E") center / contain no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 8h10M9 4l4 4-4 4'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+html[dir="rtl"] .tm-view::after { transform: scaleX(-1); }
+
+.tm-tabs {
+  --fl: 0px; --fr: 0px;
+  margin-top: 26px;
+  display: flex; gap: 8px; padding: 4px 2px 12px;
+  overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x proximity; overscroll-behavior-x: contain;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 var(--fl), #000 calc(100% - var(--fr)), transparent);
+          mask-image: linear-gradient(to right, transparent, #000 var(--fl), #000 calc(100% - var(--fr)), transparent);
+}
+.tm-tabs::-webkit-scrollbar { display: none; }
+.tm-tab {
+  flex: none; scroll-snap-align: center; white-space: nowrap;
+  padding: 11px clamp(16px, 3vw, 24px);
+  border: 1px solid var(--tm-edge); border-radius: 999px;
+  color: var(--gold); font-size: .9rem; font-weight: 800;
+  transition: background .2s, color .2s;
+}
+.tm-tab:hover { background: color-mix(in oklab, var(--gold) 14%, transparent); }
+.tm-tab[aria-current="true"] { background: var(--gold); color: var(--maroon); border-color: var(--gold); }
+
+/* ---------- Panel ---------- */
+/* كل تبويب = قسم .tm-panel واحد، والمخفي منها يحمل الخاصية hidden */
+.tm-panel {
+  background: var(--tm-panel);
+  border: 1px solid var(--tm-edge);
+  border-radius: 20px;
+  padding: clamp(18px, 4vw, 44px);
+  animation: tm-in .35s ease;
+}
+@keyframes tm-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.tm-phead {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding-bottom: clamp(16px, 3vw, 28px); border-bottom: 1px solid var(--tm-line);
+}
+.tm-phead h2 { font-size: clamp(1.7rem, 5.5vw, 3rem); font-weight: 900; color: var(--gold); line-height: 1.1; }
+
+.tm-grp { margin-top: clamp(22px, 4vw, 34px); }
+.tm-gt {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 14px; font-size: 1rem; font-weight: 800; color: var(--gold);
+}
+.tm-gt::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--gold); flex: none; }
+.tm-gt::after { content: ""; height: 1px; flex: 1; max-width: 320px; background: var(--tm-line); }
+.tm-row { display: flex; flex-wrap: wrap; gap: var(--tm-g); }
+.tm-row.is-center { justify-content: center; }
+
+/* ---------- Member card ---------- */
+.tm-card {
+  display: flex; flex-direction: column;
+  width: calc((100% - (var(--tm-n) - 1) * var(--tm-g)) / var(--tm-n));
+  text-align: start; color: var(--ivory);
+  transition: transform .2s;
+}
+.tm-card:hover { transform: translateY(-3px); }
+
+.tm-pic {
+  position: relative; display: block; overflow: hidden;
+  aspect-ratio: 3 / 4; border-radius: 16px;
+  background: linear-gradient(180deg, #1d4a8f 0%, #0f2a55 70%, #0b1c3a 100%);
+}
+.tm-pic::after {               /* تلاشي أسفل الصورة */
+  content: ""; position: absolute; inset: auto 0 0; height: 30%;
+  background: linear-gradient(transparent, #0b1c3a);
+}
+.tm-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 22%; }
+/* صورة الشخص الافتراضية (الشكل الرمادي) تُرسم من الـCSS */
+.tm-pic::before {
+  content: ""; position: absolute; inset-inline: 12%; bottom: 0; width: 76%; aspect-ratio: 1;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='38' r='17' fill='white' fill-opacity='.16'/%3E%3Cpath d='M12 100c0-24 17-36 38-36s38 12 38 36z' fill='white' fill-opacity='.16'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+}
+
+.tm-info { display: block; margin-top: 10px; padding-top: 12px; border-top: 1px solid var(--tm-line); }
+.tm-name { display: block; font-size: clamp(.9rem, 1.8vw, 1.05rem); font-weight: 900; color: var(--ivory); line-height: 1.25; overflow-wrap: anywhere; }
+.tm-card.is-tba .tm-name { font-weight: 700; opacity: .8; }
+.tm-role { display: block; margin-top: 4px; font-size: clamp(.74rem, 1.4vw, .85rem); line-height: 1.35; color: var(--ivory); opacity: .6; }
+.tm-view { display: inline-flex; align-items: center; gap: 6px; margin-top: 10px; font-size: .8rem; font-weight: 800; color: var(--ivory); }
+.tm-card:hover .tm-view { color: var(--gold); }
+
+/* ---------- Profile modal ---------- */
+.tm-modal {
+  position: fixed; inset: 0; z-index: 1000;
+  display: flex; align-items: center; justify-content: center;
+  padding: clamp(10px, 3vw, 40px);
+  background: rgba(10, 18, 38, .82); backdrop-filter: blur(4px);
+  animation: tm-in .25s ease;
+}
+.tm-mwrap { position: relative; width: min(930px, 100%); max-height: 100%; display: flex; }
+.tm-mbox {
+  width: 100%; max-height: min(92vh, 860px); overflow-y: auto;
+  background: var(--cream); color: var(--maroon);
+  border-radius: clamp(18px, 3vw, 28px);
+  border: 1px solid var(--gold);
+}
+.tm-mphoto {
+  position: relative; overflow: hidden; aspect-ratio: 7 / 6;
+  background: linear-gradient(180deg, #2b4a86, #18294F 80%);
+}
+.tm-mphoto img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
+.tm-mphoto::before {
+  content: ""; position: absolute; inset-inline: 11%; bottom: 0; width: 78%; aspect-ratio: 1;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='38' r='17' fill='white' fill-opacity='.16'/%3E%3Cpath d='M12 100c0-24 17-36 38-36s38 12 38 36z' fill='white' fill-opacity='.16'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+}
+.tm-mphoto::after {               /* تلاشي أسفل الصورة */
+  content: ""; position: absolute; inset: auto 0 0; height: 30%;
+  background: linear-gradient(transparent, #0b1c3a);
+}
+.tm-mbody { padding: clamp(22px, 4vw, 44px) clamp(20px, 4vw, 52px) clamp(28px, 4vw, 44px); }
+.tm-mrole { padding-inline-end: 48px; font-size: .78rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; opacity: .7; }
+.tm-mname { margin: 8px 0 20px; font-size: clamp(1.8rem, 6vw, 2.9rem); font-weight: 900; line-height: 1.1; color: var(--maroon); }
+.tm-mbio p { margin-bottom: 1.1em; font-size: .97rem; line-height: 1.75; color: color-mix(in oklab, var(--maroon) 85%, white); }
+.tm-mbio .is-soon { opacity: .6; font-style: italic; }
+.tm-mclose {
+  position: absolute; top: 14px; inset-inline-end: 14px; z-index: 3;
+  width: 42px; height: 42px; display: grid; place-items: center;
+  border-radius: 50%; background: var(--maroon); color: var(--gold);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, .35); transition: transform .2s;
+}
+.tm-mclose:hover { transform: scale(1.08); }
+
+/* ---------- Breakpoints ---------- */
+@media (min-width: 640px) { .subpage-main[data-page="team"] { --tm-n: 3; } }
+@media (min-width: 760px) {
+  .tm-mwrap { max-height: min(92vh, 860px); }
+  .tm-mbox { display: grid; grid-template-columns: 40% 1fr; overflow: hidden; }
+  .tm-mphoto { align-self: start; aspect-ratio: 7 / 8; }
+  .tm-mbody { overflow-y: auto; max-height: min(92vh, 860px); scrollbar-width: thin; padding-inline-end: 68px; }
+  .tm-mclose { inset-inline-end: 24px; }
+}
+@media (min-width: 1000px) { .subpage-main[data-page="team"] { --tm-n: 4; } }
+@media (max-width: 380px) { .tm-view { font-size: .68rem; } }
+@media (prefers-reduced-motion: reduce) {
+  .tm-panel, .tm-modal { animation: none; }
+  .tm-card, .tm-mclose { transition: none; }
+}
+
+/* the modal sits outside <main>, and its display:flex would otherwise override the hidden attribute */
+.tm-modal[hidden] { display: none !important; }

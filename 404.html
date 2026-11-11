@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="noindex" name="robots"/>
+  <meta content="#081933" name="theme-color"/>
+  <title data-i18n="title.notfound">Page not found | GDF'27</title>
+  <link href="images/logo.png" rel="icon" type="image/png"/>
+  <link href="style.css" rel="stylesheet"/>
+  <link href="i18n.css" rel="stylesheet"/>
+  <style>
+   .nf-main{min-height:100vh;display:grid;place-items:center;text-align:center;
+            padding:130px 24px 60px;color:var(--ivory);
+            background:linear-gradient(180deg,#081933,#011428)}
+   .nf-main img{width:clamp(110px,28vw,170px);margin:0 auto 18px;display:block}
+   .nf-code{font-size:clamp(4rem,16vw,7rem);font-weight:900;line-height:1;color:var(--gold)}
+   .nf-main h1{font-size:clamp(1.4rem,4.5vw,2rem);margin:10px 0 8px}
+   .nf-main p{opacity:.85;max-width:420px;margin:0 auto 26px;line-height:1.6}
+   .nf-btn{display:inline-block;padding:12px 24px;border-radius:999px;font-weight:800;
+           text-decoration:none;background:var(--gold);color:var(--maroon-deep)}
+  </style>
+  <script src="translations.js"></script>
+  <script src="i18n.js"></script>
+  <script defer src="script.js"></script>
+ </head>
+ <body>
+  <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to main content</a>
+  <header>
+   <nav>
+    <a class="brand" href="index.html">
+     <img alt="GDF logo" src="images/logo.png" data-i18n-attr="alt:alt.logo"/>
+     <span>
+      GDF'27
+     </span>
+    </a>
+    <ul class="nav-links">
+     <li>
+      <a data-page="home" href="index.html" data-i18n="nav.home">
+       Home
+      </a>
+     </li>
+     <li>
+      <a data-page="applications" href="applications.html" data-i18n="nav.applications">
+       Applications
+      </a>
+     </li>
+     <li>
+      <a data-page="committees" href="committees.html" data-i18n="nav.committees">
+       Committees
+      </a>
+     </li>
+     <li>
+      <a data-page="about" href="about-us.html" data-i18n="nav.about">
+       About Us
+      </a>
+     </li>
+     <li>
+      <a data-page="team" href="our-team.html" data-i18n="nav.team">
+       Our Team
+      </a>
+     </li>
+     <li>
+      <a data-page="faq" href="faq.html" data-i18n="nav.faq">
+       FAQ
+      </a>
+     </li>
+    </ul>
+    <div class="nav-tools">
+     <div class="lang-switch" id="langSwitch">
+      <button aria-controls="langMenu" aria-expanded="false" aria-haspopup="true" aria-label="Change language" class="lang-btn" id="langBtn" type="button" data-i18n-attr="aria-label:lang.change">
+       <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="10">
+        </circle>
+        <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+        </path>
+       </svg>
+       <span id="langCurrent">EN</span>
+      </button>
+      <ul class="lang-menu" id="langMenu" role="menu">
+       <li role="none"><button class="lang-option" data-lang="en" lang="en" role="menuitem" type="button">English</button></li>
+       <li role="none"><button class="lang-option" data-lang="tr" lang="tr" role="menuitem" type="button">Türkçe</button></li>
+       <li role="none"><button class="lang-option" data-lang="ar" lang="ar" role="menuitem" type="button">العربية</button></li>
+      </ul>
+     </div>
+     <button aria-controls="mobileMenu" aria-expanded="false" aria-label="Toggle menu" class="menu-btn" id="menuBtn" type="button" data-i18n-attr="aria-label:nav.toggle">
+     <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewBox="0 0 24 24">
+      <line x1="4" x2="20" y1="6" y2="6">
+      </line>
+      <line x1="4" x2="20" y1="12" y2="12">
+      </line>
+      <line x1="4" x2="20" y1="18" y2="18">
+      </line>
+     </svg>
+    </button>
+    </div>
+   </nav>
+   <ul class="mobile-menu" id="mobileMenu">
+    <li>
+     <a data-page="home" href="index.html" data-i18n="nav.home">
+      Home
+     </a>
+    </li>
+    <li>
+     <a data-page="applications" href="applications.html" data-i18n="nav.applications">
+      Applications
+     </a>
+    </li>
+    <li>
+     <a data-page="committees" href="committees.html" data-i18n="nav.committees">
+      Committees
+     </a>
+    </li>
+    <li>
+     <a data-page="about" href="about-us.html" data-i18n="nav.about">
+      About Us
+     </a>
+    </li>
+    <li>
+     <a data-page="team" href="our-team.html" data-i18n="nav.team">
+      Our Team
+     </a>
+    </li>
+    <li>
+     <a data-page="faq" href="faq.html" data-i18n="nav.faq">
+      FAQ
+     </a>
+    </li>
+   </ul>
+  </header>
+  <main id="main" tabindex="-1" class="nf-main">
+   <div>
+    <img alt="GDF emblem" src="images/emblem-gold.png" data-i18n-attr="alt:alt.emblem"/>
+    <div class="nf-code" aria-hidden="true">404</div>
+    <h1 data-i18n="nf.title">Page not found</h1>
+    <p data-i18n="nf.text">The page you are looking for does not exist or may have been moved.</p>
+    <a class="nf-btn" href="index.html" data-i18n="nf.home">Back to Home</a>
+   </div>
+  </main>
+ </body>
+</html>

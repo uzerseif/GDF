@@ -1,0 +1,162 @@
+/* =========================================
+   GDF'27 — language switcher + right-to-left (Arabic) adjustments.
+   Loaded after style.css and the page stylesheet on every page.
+   Only adds the switcher and mirrors direction-dependent rules; nothing else is restyled.
+   ========================================= */
+
+/* hide the page for a split second while a non-English language is applied (prevents an English flash) */
+
+/* The Alexandria font is loaded by i18n.js, and only when Arabic is chosen (nothing is downloaded for EN/TR). */
+
+html.i18n-pending body { visibility: hidden; }
+
+/* ---------- nav tools: language button + hamburger ---------- */
+.nav-tools {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* desktop: brand | links | tools  (style.css only defines two columns; tools sit in a third) */
+@media (min-width: 1024px) {
+    nav { grid-template-columns: minmax(0, 1fr) auto auto; align-items: center; }
+}
+
+.lang-switch { position: relative; }
+
+.lang-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 10px;
+
+    background: transparent;
+    border: 2px solid var(--maroon);
+    border-radius: 12px;
+
+    color: var(--maroon);
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1;
+    cursor: pointer;
+
+    transition: background 0.2s, color 0.2s;
+}
+
+.lang-btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+.lang-btn:hover,
+.lang-btn[aria-expanded="true"] {
+    background: var(--maroon);
+    color: var(--gold);
+}
+
+.lang-menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 12px);
+    inset-inline-end: 0;
+    z-index: 40;
+
+    min-width: 150px;
+    padding: 6px;
+
+    background: var(--maroon);
+    border: 1px solid var(--gold);
+    border-radius: 14px;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+}
+
+.lang-switch.open .lang-menu { display: block; }
+
+.lang-option {
+    display: block;
+    width: 100%;
+    padding: 9px 14px;
+
+    background: none;
+    border: 0;
+    border-radius: 9px;
+
+    color: var(--ivory);
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: start;
+    cursor: pointer;
+}
+
+.lang-option:hover,
+.lang-option:focus-visible { background: color-mix(in oklab, var(--gold) 25%, transparent); outline: none; }
+
+.lang-option[aria-current="true"] { background: var(--gold); color: var(--maroon); }
+
+/* very narrow phones: make room for brand + language + menu buttons */
+@media (max-width: 400px) {
+    .brand span { margin-right: 0; font-size: 22px; }
+    .nav-tools { gap: 6px; }
+    .lang-btn { padding: 5px 8px; }
+}
+@media (max-width: 340px) {
+    .brand img { width: 40px; height: 40px; }
+    .brand span { font-size: 20px; }
+}
+
+/* ---------- Arabic typography ---------- */
+
+
+html[lang="ar"] body,
+html[lang="ar"] button,
+html[lang="ar"] input,
+html[lang="ar"] select,
+html[lang="ar"] textarea {
+  font-family: "Alexandria", sans-serif;
+}
+
+/* Arabic headings */
+html[lang="ar"] h1,
+html[lang="ar"] h2,
+html[lang="ar"] h3,
+html[lang="ar"] .page-title {
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+
+/* letter-spacing breaks Arabic letter joining */
+html[lang="ar"] * { letter-spacing: normal !important; }
+
+/* ---------- RTL mirroring ---------- */
+html[dir="rtl"] .brand span { margin-right: 0; margin-left: 20px; }
+@media (max-width: 400px) { html[dir="rtl"] .brand span { margin-left: 0; } }
+
+html[dir="rtl"] .countdown { padding-right: 0; padding-left: 18px; }
+html[dir="rtl"] .countdown div + div { border-left: 0; border-right: 2px dotted var(--maroon); }
+
+@media (min-width: 1100px) {
+    html[dir="rtl"] .tagline { margin-left: 0; margin-right: 75px; }
+    html[dir="rtl"] .cta-row { margin-left: 0; margin-right: 77px; }
+}
+
+/* secretary-general letter: portrait float + first-letter drop cap */
+@media (min-width: 768px) and (max-width: 1099px) {
+    html[dir="rtl"] .sg-wrap { float: left; margin: 4px 30px 6px 0; }
+}
+@media (max-width: 767px) {
+    html[dir="rtl"] .letter-text p:nth-child(2)::first-letter {
+        float: none; font-size: inherit; line-height: inherit; padding: 0; font-weight: inherit; color: inherit;
+    }
+}
+
+html[dir="rtl"] .info-panel ul { padding-left: 0; padding-right: 22px; }
+
+/* FAQ accordion arrow moves to the right side */
+html[dir="rtl"] .faq-item summary { padding: 20px 36px 20px 20px; }
+html[dir="rtl"] .faq-item summary::before { left: auto; right: 18px; content: "◀"; }
+html[dir="rtl"] .faq-item[open] summary::before { content: "▼"; }
+
+/* diagonal arrow in "Apply Now ↗" */
+html[dir="rtl"] .action-link span[aria-hidden="true"] { display: inline-block; transform: scaleX(-1); }
+
+

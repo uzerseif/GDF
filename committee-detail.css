@@ -1,0 +1,15 @@
+/* Individual committee detail page */
+.subpage-main[data-page="committee-detail"] { background: var(--maroon); color: var(--ivory); }
+.committee-detail-wrap { max-width: 800px; }
+.back-link { display: inline-block; margin-bottom: 24px; color: var(--gold); font-weight: 700; }
+.committee-detail { overflow: hidden; border: 1px solid color-mix(in oklab, var(--gold) 45%, transparent); border-radius: 18px; background: var(--maroon-deep); }
+.committee-detail[hidden] { display: none; }
+.committee-detail-image { position: relative; display: grid; place-items: center; min-height: 300px; background: linear-gradient(135deg, var(--maroon-deep), var(--maroon)); }
+.committee-detail-image img { position: absolute;width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.committee-detail-image span { position: absolute; color: var(--gold); font-size: 39px; font-weight: 900; text-shadow: 0 2px 12px var(--maroon-deep); }
+.committee-detail-copy { padding: 32px; }
+.committee-detail-copy .page-title { white-space: normal; color: var(--gold); font-size: clamp(1.3rem, 5vw, 3rem); margin-bottom: 18px; }
+.committee-detail-copy p { line-height: 1.75; margin-bottom: 22px; }
+.committee-detail-copy h2 { color: var(--gold); margin: 26px 0 10px; font-size: 1.35rem; }
+.committee-detail-apply { display: flex; justify-content: center; margin-top: 30px; }
+@media(max-width:600px) { .committee-detail-image { min-height: 220px; } .committee-detail-copy { padding: 22px; } }

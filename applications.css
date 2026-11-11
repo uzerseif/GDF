@@ -1,0 +1,85 @@
+/* Applications cards: match the visual language of committee cards */
+.subpage-main[data-page="applications"] { background: var(--maroon); }
+.subpage-main[data-page="applications"] .page-cards {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 22px;
+}
+.subpage-main[data-page="applications"] .info-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  min-height: 430px;
+  padding: 28px 24px;
+  border: 1px solid color-mix(in oklab, var(--gold) 55%, transparent);
+  border-radius: 16px;
+  background-color: var(--maroon-deep);
+  background-size: cover;
+  background-position: center;
+  color: var(--ivory);
+  transition: transform .2s ease, border-color .2s ease;
+}
+.subpage-main[data-page="applications"] .info-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--gold);
+}
+.subpage-main[data-page="applications"] .info-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(43, 8, 17, .25) 0%, #18294F 100%);
+}
+.subpage-main[data-page="applications"] .info-card:nth-child(1) { background-image: url("images/delegation.JPG"); }
+.subpage-main[data-page="applications"] .info-card:nth-child(2) { background-image: url("images/delegate.JPG"); }
+.subpage-main[data-page="applications"] .info-card:nth-child(3) { background-image: url("images/PRES.JPG"); }
+.subpage-main[data-page="applications"] .info-card:nth-child(4) { background-image: url("images/chairboard.JPG"); }
+.subpage-main[data-page="applications"] .info-card .card-icon { display: none; }
+.subpage-main[data-page="applications"] .info-card h2 {
+  position: relative;
+  z-index: 1;
+  margin-top: auto;
+  color: var(--gold);
+  line-height: 1.3;
+}
+.subpage-main[data-page="applications"] .info-card p {
+  position: relative;
+  z-index: 1;
+  margin-top: 12px;
+    flex: 0 0 auto;
+  color: var(--ivory);
+  line-height: 1.6;
+}
+.subpage-main[data-page="applications"] .info-card .action-link {
+  position: relative;
+  z-index: 1;
+  margin-top: 18px;
+  background: var(--gold);
+  color: var(--maroon-deep);
+  font-weight: 800;
+}
+
+.info-panel .action-link{
+  background: var(--maroon-deep);
+  color: var(--gold);
+}
+
+.subpage-main[data-page="applications"] .info-panel { margin-top: 34px; }
+@media (max-width: 1050px) {
+  .subpage-main[data-page="applications"] .page-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 560px) {
+  .subpage-main[data-page="applications"] .page-cards { grid-template-columns: minmax(0, 1fr); }
+  .subpage-main[data-page="applications"] .info-card { min-height: 400px; min-width: 350px;;}
+}
+
+@media (max-width: 380px) {
+  .subpage-main[data-page="applications"] .info-card { min-height: 400px; min-width: 325px;;}
+
+}
+/* protocol download link sits in its own list item, without a bullet */
+.subpage-main[data-page="applications"] .protocol-item { list-style: none; }
