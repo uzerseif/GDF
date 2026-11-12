@@ -663,12 +663,16 @@ section.sponsors .sponsors-grid {
 }
 
 section.sponsors .sponsor-card {
+  flex: 0 1 calc((100% - 32px) / 3);
+  max-width: 229px;
+}
+
+section.sponsors .sponsor-card {
   display: flex;
   flex: 0 1 212px;
   align-items: center;
   justify-content: center;
-  flex: 0 1 calc((100% - 32px) / 3);
-  max-width: 229px;
+
   height: 75px;
   padding: 12px 22px;
 
