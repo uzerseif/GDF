@@ -12,5 +12,5 @@
     if (title) document.title = title.textContent.trim() + " | GDF’27";
   }
   setTitle();
-  document.addEventListener("iysg:languagechange", setTitle);
+  document.addEventListener("gdf:languagechange", setTitle);
 })();

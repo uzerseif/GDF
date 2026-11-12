@@ -581,118 +581,163 @@ h1 .gold {
 .signoff {
     margin-top: 40px;
 }
+
+
+
 /* =========================================
-    9.          sponsars
+   9. SPONSORS & PARTNERS
+   Strictly Isolated Section
 ========================================= */
 
-.sponsors {
-  background: var(--maroon-deep);
-  padding: clamp(8px, 2vw, 16px) 0 clamp(44px, 6vw, 64px);
-  overflow: hidden;
-}
-
-/* Title with a fading gold line on each side */
-.sponsors-title {
-  display: flex;
-  align-items: center;
-  gap: clamp(12px, 3vw, 28px);
-  max-width: 900px;
-  margin: 0 auto clamp(22px, 4vw, 38px);
-  padding: 0 clamp(18px, 5vw, 64px);
-  color: var(--gold);
-  font-size: clamp(1rem, 2.4vw, 1.4rem);
-  font-weight: 800;
-  letter-spacing: .22em;
-  text-transform: uppercase;
-  text-align: center;
-}
-.sponsors-title::before,
-.sponsors-title::after {
-  content: "";
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--gold));
-}
-.sponsors-title::after { transform: scaleX(-1); }
-
-/* Marquee window with soft fading edges (always left-to-right, in every language) */
-.sponsors-viewport {
-  direction: ltr;
-  overflow: hidden;
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-          mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-}
-
-.sponsors-track {
-  display: flex;
-  width: max-content;
-  animation: sponsors-scroll 32s linear infinite;
-}
-.sponsors-viewport:hover .sponsors-track { animation-play-state: paused; }
-
-.sponsors-group {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  flex-shrink: 0;
-  gap: clamp(16px, 3vw, 36px);
-  min-width: 100vw;
-  margin: 0;
-  padding: 8px clamp(8px, 1.5vw, 18px);
-  list-style: none;
-}
-
-.sponsor-logo {
-  display: grid;
-  place-items: center;
-  width: clamp(130px, 18vw, 190px);
-  height: clamp(70px, 9vw, 92px);
-  padding: 14px 18px;
-  background: var(--ivory);
-  border: 1px solid color-mix(in oklab, var(--gold) 60%, transparent);
-  border-radius: 16px;
-  box-shadow: 0 8px 22px rgba(0, 0, 0, .3);
-  transition: transform .25s ease, box-shadow .25s ease;
-}
-/* shown instead of a logo image that failed to load */
-.sponsor-name {
-  color: var(--maroon);
-  font-size: 15px;
-  font-weight: 800;
-  text-align: center;
-  line-height: 1.2;
-}
-.sponsor-logo img {
+section.sponsors {
+  position: relative;
   display: block;
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  box-sizing: border-box;
+
+  background: var(--maroon-deep);
+  padding: clamp(55px, 7vw, 85px) 20px;
+  margin: 0;
+
+  overflow: hidden;
+  isolation: isolate;
+}
+
+section.sponsors *,
+section.sponsors *::before,
+section.sponsors *::after {
+  box-sizing: border-box;
+}
+
+section.sponsors .sponsors-container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+section.sponsors .sponsors-title {
+  display: block;
+  margin: 0 0 clamp(40px, 5vw, 55px);
+  padding: 0;
+
+  color: var(--ivory);
+  font-family: inherit;
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  text-align: center;
+}
+
+section.sponsors .sponsors-category {
+  margin: 0 0 clamp(35px, 4vw, 48px);
+}
+
+section.sponsors .sponsors-category:last-child {
+  margin-bottom: 0;
+}
+
+section.sponsors .sponsors-category-title {
+  margin: 0 0 27px;
+  padding: 0;
+
+  color: var(--gold);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 6px;
+  text-align: center;
+}
+
+section.sponsors .sponsors-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+
+  width: 100%;
+  margin: 0 auto;
+}
+
+section.sponsors .sponsor-card {
+  display: flex;
+  flex: 0 1 212px;
+  align-items: center;
+  justify-content: center;
+
+  height: 75px;
+  padding: 12px 22px;
+
+  background: var(--ivory);
+  border: 1px solid var(--gold);
+  border-radius: 13px;
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+section.sponsors .sponsor-card img {
+  display: block;
+  width: auto;
+  height: auto;
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
-  filter: grayscale(1);
-  opacity: .8;
-  transition: filter .25s ease, opacity .25s ease;
+  filter: none;
+  opacity: 1;
 }
-.sponsor-logo:hover,
-.sponsor-logo:focus-visible {
+
+section.sponsors .sponsor-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 14px 30px rgba(0, 0, 0, .4);
-}
-.sponsor-logo:hover img,
-.sponsor-logo:focus-visible img { filter: none; opacity: 1; }
-
-@keyframes sponsors-scroll {
-  to { transform: translateX(-50%); }
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
 }
 
-/* Visitors who prefer reduced motion get a static, wrapped grid instead of the marquee */
-@media (prefers-reduced-motion: reduce) {
-  .sponsors-track { animation: none; width: auto; justify-content: center; }
-  .sponsors-group[aria-hidden="true"] { display: none; }
-  .sponsors-group { flex-wrap: wrap; justify-content: center; min-width: 0; }
-  .sponsors-viewport { -webkit-mask-image: none; mask-image: none; }
+@media (max-width: 768px) {
+  section.sponsors {
+    padding: 55px 18px;
+  }
+
+  section.sponsors .sponsors-grid {
+    gap: 13px;
+  }
+
+  section.sponsors .sponsor-card {
+    flex-basis: 185px;
+    height: 72px;
+  }
 }
 
-@media (max-width: 560px) {
-  .sponsors-track { animation-duration: 24s; }
+@media (max-width: 480px) {
+  section.sponsors {
+    padding: 45px 15px;
+  }
+
+  section.sponsors .sponsors-title {
+    font-size: 27px;
+    margin-bottom: 38px;
+  }
+
+  section.sponsors .sponsors-category {
+    margin-bottom: 35px;
+  }
+
+  section.sponsors .sponsors-category-title {
+    font-size: 12px;
+    letter-spacing: 5px;
+    margin-bottom: 20px;
+  }
+
+  section.sponsors .sponsors-grid {
+    gap: 12px;
+  }
+
+  section.sponsors .sponsor-card {
+    flex-basis: calc(50% - 6px);
+    height: 68px;
+    padding: 10px 13px;
+    border-radius: 10px;
+  }
 }
 
 /* =========================================

@@ -147,7 +147,7 @@
 
   /* ================= 3. اللغة ================= */
   /* i18n.js يترجم عناصر data-i18n بنفسه؛ هنا نحدّث ما يعتمد على اللغة فقط */
-  document.addEventListener("iysg:languagechange", function () {
+  document.addEventListener("gdf:languagechange", function () {
     centerTab(true);
     if (openCard) fillModal(openCard);
   });

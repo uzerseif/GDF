@@ -34,10 +34,10 @@
   z-index: -1;
   background: linear-gradient(180deg, rgba(43, 8, 17, .25) 0%, #18294F 100%);
 }
-.subpage-main[data-page="applications"] .info-card:nth-child(1) { background-image: url("images/delegation.JPG"); }
-.subpage-main[data-page="applications"] .info-card:nth-child(2) { background-image: url("images/delegate.JPG"); }
-.subpage-main[data-page="applications"] .info-card:nth-child(3) { background-image: url("images/PRES.JPG"); }
-.subpage-main[data-page="applications"] .info-card:nth-child(4) { background-image: url("images/chairboard.JPG"); }
+.subpage-main[data-page="applications"] .info-card:nth-child(1) { background-image: url("images/delegation.webp"); }
+.subpage-main[data-page="applications"] .info-card:nth-child(2) { background-image: url("images/delegate.webp"); }
+.subpage-main[data-page="applications"] .info-card:nth-child(3) { background-image: url("images/PRES.webp"); }
+.subpage-main[data-page="applications"] .info-card:nth-child(4) { background-image: url("images/chairboard.webp"); }
 .subpage-main[data-page="applications"] .info-card .card-icon { display: none; }
 .subpage-main[data-page="applications"] .info-card h2 {
   position: relative;

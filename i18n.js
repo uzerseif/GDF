@@ -7,7 +7,7 @@
    - The chosen language is remembered in localStorage.
    ========================================= */
 (function () {
-  var STORAGE_KEY = 'iysg-lang';
+  var STORAGE_KEY = 'gdf-lang';
   var LANGS = {
     en: { dir: 'ltr', code: 'EN' },
     ar: { dir: 'rtl', code: 'AR' },
@@ -91,7 +91,7 @@
       if (on) btn.setAttribute('aria-current', 'true'); else btn.removeAttribute('aria-current');
     });
     /* Lets page scripts (e.g. committee-detail.js) refresh text they build themselves. */
-    document.dispatchEvent(new CustomEvent('iysg:languagechange', { detail: { lang: lang } }));
+    document.dispatchEvent(new CustomEvent('gdf:languagechange', { detail: { lang: lang } }));
   }
 
   /* ---------- dropdown behaviour ---------- */
