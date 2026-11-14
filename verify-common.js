@@ -4,8 +4,8 @@
    Only a publishable/anon Supabase key belongs here — never a service_role key.
    ========================================= */
 (function () {
-  var SUPABASE_URL = 'https://canbuykffqmxcxrlqaqu.supabase.co';
-  var SUPABASE_ANON_KEY = 'sb_publishable_OM5UYBdmoKBwv0pmR--hzQ_9em0M6-S';
+  var SUPABASE_URL = 'https://jsmhvlvifkzsuydqctfu.supabase.co';
+  var SUPABASE_ANON_KEY = 'sb_publishable_Koy30Joiyf8CntvTP-pfOg_RB-evRbP';
   var LOCALES = { en: 'en-GB', ar: 'ar-u-nu-latn', tr: 'tr-TR' };
   var client = null;
 

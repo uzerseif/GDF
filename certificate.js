@@ -19,6 +19,7 @@
     revoked: 'Revoked', expired: 'Expired', invalid: 'Invalid', unknown: 'Unknown', notvalid: 'Not valid'
   };
 
+  var pdfBusy = false;
   var state = null; /* null while loading, then { cert, id } or { error } */
 
   function make(tag, className, text) {
@@ -79,6 +80,18 @@
     list.append(item);
   }
 
+  function pdfLabel() {
+    return pdfBusy ? V.t('cert.pdf.busy', 'Preparing PDF...') : V.t('cert.pdf', 'Download PDF');
+  }
+
+  function setPdfBusy(value) {
+    pdfBusy = value;
+    var button = document.getElementById('pdfBtn');
+    if (!button) return;
+    button.disabled = value;
+    button.querySelector('.cert-btn-label').textContent = pdfLabel();
+  }
+
   function drawCertificate(root, c, id) {
     var valid = String(c.status || '').trim().toLowerCase() === 'valid';
     var original = safeImage(c.certificate_image);
@@ -128,21 +141,39 @@
     addItem(list, V.t('cert.country', 'Representing'), c.represented_country);
     addItem(list, V.t('cert.type', 'Certificate Type'), c.certificate_type);
     addItem(list, V.t('cert.date', 'Issue Date'), V.formatDate(c.issue_date));
-    addItem(list, V.t('cert.summary', 'Performance Summary'), c.performance_summary);
 
     var layout = make('div', 'cert-layout');
     layout.append(figure, list);
 
     /* actions */
     var actions = make('div', 'detail-actions');
+    var note = make('p', 'pdf-note');
+    note.setAttribute('role', 'alert');
+    if (valid) {
+      var pdfBtn = make('button', 'cert-btn');
+      pdfBtn.type = 'button';
+      pdfBtn.id = 'pdfBtn';
+      pdfBtn.disabled = pdfBusy;
+      pdfBtn.append(make('span', 'cert-btn-label', pdfLabel()));
+      pdfBtn.addEventListener('click', function () {
+        if (pdfBusy) return;
+        setPdfBusy(true);
+        note.textContent = '';
+        window.GDFCertificatePDF.download(c, id, original).catch(function (e) {
+          console.error(e, e && e.cause);
+          note.textContent = V.t('cert.pdf.fail', 'Could not create the PDF. Please try again.') + (e && typeof e.code === 'string' ? ' (' + e.code + ')' : '');
+        }).then(function () { setPdfBusy(false); });
+      });
+      actions.append(pdfBtn);
+    }
     if (valid && original) {
-      var open = make('a', 'cert-btn', V.t('cert.open', 'Open Certificate Image'));
+      var open = make('a', 'cert-btn ghost', V.t('cert.open', 'Open Certificate Image'));
       open.href = original; open.target = '_blank'; open.rel = 'noopener noreferrer';
       actions.append(open);
     }
     actions.append(backLink(V.t('cert.another', 'Verify Another Certificate'), 'cert-btn ghost'));
 
-    card.append(statusRow, who, layout, actions);
+    card.append(statusRow, who, layout, actions, note);
     root.replaceChildren(card);
   }
 

@@ -464,3 +464,159 @@
 /* ---------- right-to-left (Arabic) ---------- */
 
 html[dir="rtl"] .verify-btn svg { transform: scaleX(-1); }
+
+
+/* ---------- PDF button note ---------- */
+
+.pdf-note {
+  margin-top: 14px;
+  color: var(--bad);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.pdf-note:empty { display: none; }
+
+.cert-btn:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+
+/* =========================================
+   PDF sheet (A4 @ 96dpi) — built off-screen by certificate-pdf.js, captured, then removed.
+   Plain hex colours on purpose: the capture library does not understand color-mix().
+   ========================================= */
+
+.pdf-sheet {
+  position: fixed;
+  left: -10000px;
+  top: 0;
+  width: 794px;
+  height: 1123px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #ffffff;
+  color: #081933;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+html[lang="ar"] .pdf-sheet { font-family: "Alexandria", Arial, sans-serif; }
+
+.pdf-head {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 28px 48px;
+  background: #081933;
+  color: #EAD7B0;
+}
+
+.pdf-head img { width: 76px; height: 76px; object-fit: contain; }
+.pdf-brand { font-size: 32px; font-weight: 700; line-height: 1.2; }
+.pdf-brand-sub { margin-top: 2px; font-size: 14px; opacity: 0.85; }
+
+.pdf-doc {
+  margin-inline-start: auto;
+  max-width: 260px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  line-height: 1.5;
+  text-align: end;
+  text-transform: uppercase;
+}
+
+.pdf-rule { height: 6px; background: #EAD7B0; }
+
+.pdf-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  padding: 34px 48px 0;
+}
+
+.pdf-intro { text-align: center; }
+
+.pdf-status {
+  display: inline-block;
+  margin-bottom: 18px;
+  padding: 7px 18px;
+  border: 1px solid #2e9e68;
+  border-radius: 999px;
+  background: #eaf7f0;
+  color: #1d7a4c;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.pdf-status.invalid {
+  border-color: #c25757;
+  background: #fbecec;
+  color: #a03a3a;
+}
+
+.pdf-label {
+  color: #8a6d2f;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.pdf-name {
+  margin-top: 6px;
+  color: #081933;
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 1.3;
+}
+
+.pdf-frame {
+  padding: 10px;
+  border: 1px solid #d9c9a3;
+  border-radius: 10px;
+  background: #f1e8d1;
+}
+
+.pdf-image {
+  display: block;
+  width: 100%;
+  max-height: 430px;
+  object-fit: contain;
+  border-radius: 4px;
+  background: #ffffff;
+}
+
+.pdf-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px 36px;
+}
+
+.pdf-field {
+  padding: 12px 0;
+  border-bottom: 1px solid #e5dcc6;
+}
+
+.pdf-value {
+  margin-top: 4px;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.pdf-foot {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 0 48px;
+  padding: 16px 0 26px;
+  border-top: 1px solid #d9c9a3;
+  color: #55627a;
+  font-size: 11px;
+  line-height: 1.6;
+}
