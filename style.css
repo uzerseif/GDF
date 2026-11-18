@@ -1198,3 +1198,21 @@ main:focus { outline: none; }
     outline-offset: 2px;
     box-shadow: 0 0 0 5px var(--maroon-deep);
 }
+
+/* =========================================
+   CMS ADDITIONS (optional elements managed from the admin dashboard)
+========================================= */
+.venue-photo { margin: 14px 0 18px; border-radius: 16px; overflow: hidden; max-width: 520px; }
+.venue-photo img { width: 100%; height: auto; display: block; }
+.pres-signature { display: block; max-height: 64px; width: auto; margin-top: 10px; }
+.pres-signature[hidden], .venue-photo[hidden] { display: none; }
+.pres.cms-photo-right .pres-photo { order: 2; }
+.cms-section-image { margin: 24px auto 0; max-width: 900px; border-radius: 16px; overflow: hidden; }
+.cms-section-image.is-top { margin: 0 auto 24px; }
+.cms-section-image img { width: 100%; height: auto; display: block; }
+.tm-pdesc, .tm-gdesc { max-width: 720px; margin: 8px auto 0; opacity: .85; line-height: 1.6; text-align: center; }
+.tm-gimg { display: block; max-width: 160px; max-height: 120px; margin: 0 auto 12px; object-fit: contain; }
+.tm-social a { text-decoration: underline; }
+/* keep the original spacing now that sponsors is a sibling of the venue section */
+.venue:has(+ section.sponsors) { padding-bottom: 0; }
+.venue + section.sponsors { padding-bottom: calc(clamp(55px, 7vw, 85px) + clamp(40px, 6vw, 64px)); }

@@ -8,7 +8,7 @@
   </title>
   <meta content="Speak. Represent. Resolve. Join the Gaziantep Diplomacy Forum, March 2027." name="description" data-i18n-attr="content:meta.home"/>
   <meta content="#081933" name="theme-color"/>
-  <link href="https://YOUR-DOMAIN.com/" rel="canonical"/>
+  <link href="./" rel="canonical"/>
   <meta content="website" property="og:type"/>
   <meta content="GDF'27" property="og:site_name"/>
   <meta content="GDF&#x27;27 | Gaziantep Diplomacy Forum 2027" property="og:title" data-i18n-attr="content:title.home"/>
@@ -26,49 +26,53 @@
   <link href="i18n.css" rel="stylesheet"/>
   <script src="translations.js"></script>
   <script src="i18n.js"></script>
+  <script src="cms-config.js"></script>
+  <script src="cms-boot.js"></script>
   <script defer="" src="script.js">
   </script>
   <script defer="" src="home.js">
   </script>
- </head>
+   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script defer src="cms-public.js"></script>
+</head>
  <body>
   <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to main content</a>
-  <header>
+  <header data-cms-section="global:header">
    <nav>
-    <a class="brand" href="index.html">
-     <img alt="GDF logo" src="images/logo.webp" data-i18n-attr="alt:alt.logo"/>
-     <span>
+    <a class="brand" href="./">
+     <img data-cms="header-logo" alt="GDF logo" src="images/logo.webp" data-i18n-attr="alt:alt.logo"/>
+     <span data-i18n="brand.name">
       GDF'27
      </span>
     </a>
     <ul class="nav-links">
      <li>
-      <a data-page="home" href="index.html" data-i18n="nav.home">
+      <a data-page="home" href="./" data-i18n="nav.home">
        Home
       </a>
      </li>
      <li>
-      <a data-page="applications" href="applications.html" data-i18n="nav.applications">
+      <a data-page="applications" href="applications/" data-i18n="nav.applications">
        Applications
       </a>
      </li>
      <li>
-      <a data-page="committees" href="committees.html" data-i18n="nav.committees">
+      <a data-page="committees" href="committees/" data-i18n="nav.committees">
        Committees
       </a>
      </li>
      <li>
-      <a data-page="about" href="about-us.html" data-i18n="nav.about">
+      <a data-page="about" href="about/" data-i18n="nav.about">
        About Us
       </a>
      </li>
      <li>
-      <a data-page="team" href="our-team.html" data-i18n="nav.team">
+      <a data-page="team" href="team/" data-i18n="nav.team">
        Our Team
       </a>
      </li>
      <li>
-      <a data-page="faq" href="faq.html" data-i18n="nav.faq">
+      <a data-page="faq" href="faq/" data-i18n="nav.faq">
        FAQ
       </a>
      </li>
@@ -104,32 +108,32 @@
    </nav>
    <ul class="mobile-menu" id="mobileMenu">
     <li>
-     <a data-page="home" href="index.html" data-i18n="nav.home">
+     <a data-page="home" href="./" data-i18n="nav.home">
       Home
      </a>
     </li>
     <li>
-     <a data-page="applications" href="applications.html" data-i18n="nav.applications">
+     <a data-page="applications" href="applications/" data-i18n="nav.applications">
       Applications
      </a>
     </li>
     <li>
-     <a data-page="committees" href="committees.html" data-i18n="nav.committees">
+     <a data-page="committees" href="committees/" data-i18n="nav.committees">
       Committees
      </a>
     </li>
     <li>
-     <a data-page="about" href="about-us.html" data-i18n="nav.about">
+     <a data-page="about" href="about/" data-i18n="nav.about">
       About Us
      </a>
     </li>
     <li>
-     <a data-page="team" href="our-team.html" data-i18n="nav.team">
+     <a data-page="team" href="team/" data-i18n="nav.team">
       Our Team
      </a>
     </li>
     <li>
-     <a data-page="faq" href="faq.html" data-i18n="nav.faq" >
+     <a data-page="faq" href="faq/" data-i18n="nav.faq" >
       FAQ
      </a>
     </li>
@@ -137,12 +141,12 @@
   </header>
   <main id="main" tabindex="-1">
           <!-- hero section -->
-   <section class="hero" id="home">
-    <video class="hero-video" autoplay muted loop playsinline aria-hidden="true">
+   <section class="hero" id="home" data-cms-section="home:hero">
+    <video class="hero-video" data-cms="hero-video" autoplay muted loop playsinline aria-hidden="true">
       <source src="Videos/hero.mp4" type="video/mp4">
       Your browser does not support HTML5 video.
     </video>
-    <div class="hero-overlay">
+    <div class="hero-overlay" data-cms="hero-overlay">
     </div>
     <div class="hero-inner">
      <div class="hero-text">
@@ -159,7 +163,7 @@
         Forum
        </span>
        <br/>
-       <span class="ivory">
+       <span class="ivory" data-i18n="hero.year">
         2027
        </span>
       </h1>
@@ -167,17 +171,17 @@
        "Speak. Represent. Resolve."
       </p>
       <div class="cta-row">
-       <a class="cta" href="applications.html" data-i18n="hero.apply">
+       <a class="cta" data-cms="hero-cta1" href="applications/" data-i18n="hero.apply">
         Apply Now!
        </a>
-       <a class="cta" href="committees.html" data-i18n="nav.committees">
+       <a class="cta" data-cms="hero-cta2" href="committees/" data-i18n="nav.committees">
         Committees
        </a>
       </div>
      </div>
      <div class="hero-right">
-      <img alt="GDF emblem" class="emblem" src="images/emblem-gold.webp" data-i18n-attr="alt:alt.emblem"/>
-      <div class="countdown-group">
+      <img alt="GDF emblem" class="emblem" data-cms="hero-emblem" src="images/emblem-gold.webp" data-i18n-attr="alt:alt.emblem"/>
+      <div class="countdown-group" data-cms="hero-countdown">
        <p class="countdown-label" data-i18n="cd.label">
         GDF'27 will start in...
        </p>
@@ -208,10 +212,10 @@
     </div>
    </section>
           <!-- letter section -->
-   <section class="pres" id="team">
+   <section class="pres" id="team" data-cms-section="home:president">
     <div class="pres-inner">
       <figure class="pres-photo">
-        <img src="images/team/president.webp" alt="President" data-i18n-attr="alt:alt.pres"/>
+        <img data-cms="pres-photo" src="images/team/president.webp" alt="President" data-i18n-attr="alt:alt.pres"/>
       </figure>
       <div class="pres-body">
         <h3 class="pres-eyebrow" data-i18n="pres.title">A Letter from the President</h3>
@@ -222,8 +226,9 @@
           <div>
             <strong class="pres-name" data-i18n="pres.name">ÖMER BALUTSH</strong>
             <span class="pres-role" data-i18n="pres.role">President of GDF'27</span>
+            <img class="pres-signature" data-cms="pres-signature" alt="" hidden>
           </div>
-          <a class="pres-btn" href="message-from-president.html">
+          <a class="pres-btn" data-cms="pres-btn" href="president/">
             <span data-i18n="pres.more">Continue Reading</span>
             <span class="pres-arrow" aria-hidden="true">→</span>
           </a>
@@ -232,19 +237,20 @@
     </div>
   </section>
           <!-- venue section -->
-   <section class="venue" id="venue">
+   <section class="venue" id="venue" data-cms-section="home:venue">
       <div class="venue-inner">
         <div class="venue-info">
           <h2 class="venue-title" data-i18n="venue.title">Venue of the Conference</h2>
           <p class="venue-school" data-i18n="venue.school">International Gaziantep Anatolian Imam Hatip High School</p>
+          <figure class="venue-photo" data-cms="venue-photo" hidden><img alt="" loading="lazy"></figure>
 
           <ul class="venue-list">
-            <li><strong data-i18n="lbl.address">Address:</strong> <bdi dir="ltr">Osmanlı Mah. Çakmak Küme Evleri İç Kapı No: 5, Şahinbey / Gaziantep</bdi></li>
-            <li><strong data-i18n="lbl.email">Email:</strong> <a dir="ltr" href="mailto:gdf27.official@gmail.com">gdf27.official@gmail.com</a></li>
-            <li><strong data-i18n="lbl.phone">Phone:</strong> <a dir="ltr" href="tel:+9058220643000">+90 5822 064 300</a></li>
+            <li><strong data-i18n="lbl.address">Address:</strong> <bdi dir="ltr" data-cms="venue-address">Osmanlı Mah. Çakmak Küme Evleri İç Kapı No: 5, Şahinbey / Gaziantep</bdi></li>
+            <li><strong data-i18n="lbl.email">Email:</strong> <a dir="ltr" data-cms="venue-email" href="mailto:gdf27.official@gmail.com">gdf27.official@gmail.com</a></li>
+            <li><strong data-i18n="lbl.phone">Phone:</strong> <a dir="ltr" data-cms="venue-phone" href="tel:+9058220643000">+90 5822 064 300</a></li>
           </ul>
 
-          <a class="venue-maps-btn" href="https://maps.google.com/?cid=5253672414103134596" target="_blank" rel="noopener noreferrer">
+          <a class="venue-maps-btn" data-cms="venue-maps" href="https://maps.google.com/?cid=5253672414103134596" target="_blank" rel="noopener noreferrer">
             <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
               <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
               <circle cx="12" cy="10" r="3"></circle>
@@ -254,11 +260,12 @@
         </div>
 
         <div class="venue-map">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7537.729250622619!2d37.43577989534823!3d37.01318473364827!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1531e700166116d5%3A0x48e8cb39b8e2e184!2sInternational%20Gaziantep%20Anatolian%20Imam%20Hatip%20Highschool!5e1!3m2!1sen!2sus!4v1792269940354!5m2!1sen!2sus" title="Map showing the conference venue" data-i18n-attr="title:venue.maptitle" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>        </div>
+          <iframe data-cms="venue-embed" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7537.729250622619!2d37.43577989534823!3d37.01318473364827!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1531e700166116d5%3A0x48e8cb39b8e2e184!2sInternational%20Gaziantep%20Anatolian%20Imam%20Hatip%20Highschool!5e1!3m2!1sen!2sus!4v1792269940354!5m2!1sen!2sus" title="Map showing the conference venue" data-i18n-attr="title:venue.maptitle" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>        </div>
       </div>
               
-      <!-- Sponsors & Partners Section -->
-    <section class="sponsors" id="sponsors" aria-label="Sponsors and Partners">
+      </section>
+    <!-- Sponsors & Partners Section -->
+    <section class="sponsors" id="sponsors" data-cms-section="home:sponsors" aria-label="Sponsors and Partners">
         <div class="sponsors-container">
           <h2 class="sponsors-title" data-i18n="sponsors.title">
            Sponsorlar <!-- & Partnerler -->
@@ -349,12 +356,12 @@
 
   </main>
   
-  <footer id="contact">
+  <footer id="contact" data-cms-section="global:footer">
     <div class="footer-inner">
      <div>
       <div class="footer-brand">
-       <img alt="GDF logo" src="images/logo.webp" data-i18n-attr="alt:alt.logo"/>
-       <span>
+       <img data-cms="footer-logo" alt="GDF logo" src="images/logo.webp" data-i18n-attr="alt:alt.logo"/>
+       <span data-i18n="brand.name">
         GDF'27
        </span>
       </div>
@@ -383,17 +390,17 @@
          <circle cx="12" cy="10" r="3">
          </circle>
         </svg>
-        <bdi dir="ltr">Osmanlı Mah. Çakmak Küme Evleri İç Kapı No: 5, Şahinbey / Gaziantep</bdi>
+        <bdi dir="ltr" data-cms="footer-address">Osmanlı Mah. Çakmak Küme Evleri İç Kapı No: 5, Şahinbey / Gaziantep</bdi>
        </li>
        <li>
         <span data-i18n="lbl.email">
          Email:
         </span>
-        <a dir="ltr" href="mailto:gdf27.official@gmail.com">
+        <a data-cms="footer-email" dir="ltr" href="mailto:gdf27.official@gmail.com">
          gdf27.official@gmail.com
         </a>
        </li>
-       <li>
+       <li data-cms="footer-phones">
         <span data-i18n="lbl.phone">
          Phone:
         </span>
@@ -407,49 +414,49 @@
        </li>
       </ul>
      </div>
-     <div class="footer-col">
+     <div class="footer-col" data-cms="footer-quick">
       <h3 data-i18n="footer.quick">
        Quick Links
       </h3>
       <ul>
        <li>
-        <a href="index.html" data-i18n="nav.home">
+        <a href="./" data-i18n="nav.home">
          Home
         </a>
        </li>
        <li>
-        <a href="applications.html" data-i18n="nav.applications">
+        <a href="applications/" data-i18n="nav.applications">
          Applications
         </a>
        </li>
        <li>
-        <a href="committees.html" data-i18n="nav.committees">
+        <a href="committees/" data-i18n="nav.committees">
          Committees
         </a>
        </li>
        <li>
-        <a href="about-us.html" data-i18n="nav.about">
+        <a href="about/" data-i18n="nav.about">
          About Us
         </a>
        </li>
        <li>
-        <a href="our-team.html" data-i18n="nav.team">
+        <a href="team/" data-i18n="nav.team">
          Our Team
         </a>
        </li>
        <li>
-        <a href="faq.html" data-i18n="nav.faq">
+        <a href="faq/" data-i18n="nav.faq">
          FAQ
         </a>
        </li>
        <li>
-        <a href="verify.html" data-i18n="nav.verify">
+        <a href="verify/" data-i18n="nav.verify">
          Verify Certificate
         </a>
        </li>
       </ul>
      </div>
-     <div class="footer-col">
+     <div class="footer-col" data-cms="footer-follow">
       <h3 data-i18n="footer.follow">
        Follow us
       </h3>
@@ -470,7 +477,7 @@
      <p class="copyright" data-i18n="footer.copy">
       &copy; 2027 GDF'27. All rights reserved.
      </p>
-     <p class="footer-credit">
+     <p class="footer-credit" data-cms="footer-credit">
      <bdi data-i18n="footer.made">Made with love for GDF.</bdi>
      <span>
       <bdi data-i18n="footer.design">Web Design by</bdi> <a href="https://www.instagram.com/uzzerseif/" >Youssef Mohamed (@uzzerseif)</a>

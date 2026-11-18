@@ -9,12 +9,12 @@
   <meta content="Certificate details from the official GDF&#x27;27 records." name="description" data-i18n-attr="content:meta.certificate"/>
   <meta content="#081933" name="theme-color"/>
   <meta content="noindex" name="robots"/>
-  <link href="https://YOUR-DOMAIN.com/certificate.html" rel="canonical"/>
+  <link href="certificate/" rel="canonical"/>
   <meta content="website" property="og:type"/>
   <meta content="GDF'27" property="og:site_name"/>
   <meta content="Certificate Details | GDF'27" property="og:title" data-i18n-attr="content:title.certificate"/>
   <meta content="Certificate details from the official GDF&#x27;27 records." property="og:description" data-i18n-attr="content:meta.certificate"/>
-  <meta content="https://YOUR-DOMAIN.com/certificate.html" property="og:url"/>
+  <meta content="https://YOUR-DOMAIN.com/certificate/" property="og:url"/>
   <meta content="https://YOUR-DOMAIN.com/images/og-image.webp" property="og:image"/>
   <meta content="1200" property="og:image:width"/>
   <meta content="630" property="og:image:height"/>
@@ -27,51 +27,54 @@
   <link href="i18n.css" rel="stylesheet"/>
   <script src="translations.js"></script>
   <script src="i18n.js"></script>
+  <script src="cms-config.js"></script>
+  <script src="cms-boot.js"></script>
   <script defer="" src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script defer="" src="script.js"></script>
   <script defer="" src="verify-common.js"></script>
   <script defer="" src="certificate-pdf-assets.js"></script>
   <script defer="" src="certificate-pdf.js"></script>
   <script defer="" src="certificate.js"></script>
- </head>
+   <script defer src="cms-public.js"></script>
+</head>
  <body>
-  <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to main content</a>
-  <header>
+  <a class="skip-link" href="certificate/#main" data-i18n="a11y.skip">Skip to main content</a>
+  <header data-cms-section="global:header">
    <nav>
-    <a class="brand" href="index.html">
-     <img alt="GDF logo" src="images/logo.webp" data-i18n-attr="alt:alt.logo"/>
-     <span>
+    <a class="brand" href="./">
+     <img data-cms="header-logo" alt="GDF logo" src="images/logo.webp" data-i18n-attr="alt:alt.logo"/>
+     <span data-i18n="brand.name">
       GDF'27
      </span>
     </a>
     <ul class="nav-links">
      <li>
-      <a data-page="home" href="index.html" data-i18n="nav.home">
+      <a data-page="home" href="./" data-i18n="nav.home">
        Home
       </a>
      </li>
      <li>
-      <a data-page="applications" href="applications.html" data-i18n="nav.applications">
+      <a data-page="applications" href="applications/" data-i18n="nav.applications">
        Applications
       </a>
      </li>
      <li>
-      <a data-page="committees" href="committees.html" data-i18n="nav.committees">
+      <a data-page="committees" href="committees/" data-i18n="nav.committees">
        Committees
       </a>
      </li>
      <li>
-      <a data-page="about" href="about-us.html" data-i18n="nav.about">
+      <a data-page="about" href="about/" data-i18n="nav.about">
        About Us
       </a>
      </li>
      <li>
-      <a data-page="team" href="our-team.html" data-i18n="nav.team">
+      <a data-page="team" href="team/" data-i18n="nav.team">
        Our Team
       </a>
      </li>
      <li>
-      <a data-page="faq" href="faq.html" data-i18n="nav.faq">
+      <a data-page="faq" href="faq/" data-i18n="nav.faq">
        FAQ
       </a>
      </li>
@@ -108,33 +111,33 @@
    </nav>
    <ul class="mobile-menu" id="mobileMenu">
     <li>
-     <a data-page="home" href="index.html" data-i18n="nav.home">
+     <a data-page="home" href="./" data-i18n="nav.home">
       Home
      </a>
     </li>
     <li>
-     <a data-page="applications" href="applications.html" data-i18n="nav.applications">
+     <a data-page="applications" href="applications/" data-i18n="nav.applications">
       Applications
      </a>
     </li>
     <li>
-     <a data-page="committees" href="committees.html" data-i18n="nav.committees">
+     <a data-page="committees" href="committees/" data-i18n="nav.committees">
       Committees
      </a>
     </li>
     <li>
-     <a data-page="about" href="about-us.html" data-i18n="nav.about">
+     <a data-page="about" href="about/" data-i18n="nav.about">
       About Us
      </a>
     </li>
     <li>
-     <a data-page="team" href="our-team.html" data-i18n="nav.team">
+     <a data-page="team" href="team/" data-i18n="nav.team">
       Our Team
      </a>
     </li>
     
     <li>
-     <a data-page="faq" href="faq.html" data-i18n="nav.faq">
+     <a data-page="faq" href="faq/" data-i18n="nav.faq">
       FAQ
      </a>
     </li>
@@ -150,12 +153,12 @@
     <div id="certificateContent" aria-live="polite"></div>
    </div>
   </main>
-  <footer id="contact">
+  <footer id="contact" data-cms-section="global:footer">
    <div class="footer-inner">
     <div>
      <div class="footer-brand">
-      <img alt="GDF logo" src="images/logo.webp" data-i18n-attr="alt:alt.logo"/>
-      <span>
+      <img data-cms="footer-logo" alt="GDF logo" src="images/logo.webp" data-i18n-attr="alt:alt.logo"/>
+      <span data-i18n="brand.name">
        GDF'27
       </span>
      </div>
@@ -184,17 +187,17 @@
          <circle cx="12" cy="10" r="3">
          </circle>
         </svg>
-        <bdi dir="ltr">Osmanlı Mah. Çakmak Küme Evleri İç Kapı No: 5, Şahinbey / Gaziantep</bdi>
+        <bdi dir="ltr" data-cms="footer-address">Osmanlı Mah. Çakmak Küme Evleri İç Kapı No: 5, Şahinbey / Gaziantep</bdi>
        </li>
        <li>
         <span data-i18n="lbl.email">
          Email:
         </span>
-        <a dir="ltr" href="mailto:gdf27.official@gmail.com">
+        <a data-cms="footer-email" dir="ltr" href="mailto:gdf27.official@gmail.com">
          gdf27.official@gmail.com
         </a>
        </li>
-       <li>
+       <li data-cms="footer-phones">
         <span data-i18n="lbl.phone">
          Phone:
         </span>
@@ -208,49 +211,49 @@
       </li>
      </ul>
     </div>
-    <div class="footer-col">
+    <div class="footer-col" data-cms="footer-quick">
      <h3 data-i18n="footer.quick">
       Quick Links
      </h3>
      <ul>
       <li>
-       <a href="index.html" data-i18n="nav.home">
+       <a href="./" data-i18n="nav.home">
         Home
        </a>
       </li>
       <li>
-       <a href="applications.html" data-i18n="nav.applications">
+       <a href="applications/" data-i18n="nav.applications">
         Applications
        </a>
       </li>
       <li>
-       <a href="committees.html" data-i18n="nav.committees">
+       <a href="committees/" data-i18n="nav.committees">
         Committees
        </a>
       </li>
       <li>
-       <a href="about-us.html" data-i18n="nav.about">
+       <a href="about/" data-i18n="nav.about">
         About Us
        </a>
       </li>
       <li>
-       <a href="our-team.html" data-i18n="nav.team">
+       <a href="team/" data-i18n="nav.team">
         Our Team
        </a>
       </li>
       <li>
-       <a href="faq.html" data-i18n="nav.faq">
+       <a href="faq/" data-i18n="nav.faq">
         FAQ
        </a>
       </li>
        <li>
-        <a href="verify.html" data-i18n="nav.verify">
+        <a href="verify/" data-i18n="nav.verify">
          Verify Certificate
         </a>
        </li>
      </ul>
     </div>
-    <div class="footer-col">
+    <div class="footer-col" data-cms="footer-follow">
      <h3 data-i18n="footer.follow">
       Follow us
      </h3>
@@ -271,7 +274,7 @@
     <p class="copyright" data-i18n="footer.copy">
       &copy; 2027 GDF'27. All rights reserved.
     </p>
-    <p class="footer-credit">
+    <p class="footer-credit" data-cms="footer-credit">
      <bdi data-i18n="footer.made">Made with love for GDF.</bdi>
      <span>
       <bdi data-i18n="footer.design">Web Design by</bdi> <a href="https://www.instagram.com/uzzerseif/" >Youssef Mohamed (@uzzerseif)</a>

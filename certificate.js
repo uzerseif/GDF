@@ -39,7 +39,7 @@
 
   function backLink(label, className) {
     var a = make('a', className, label);
-    a.href = 'verify.html';
+    a.href = 'verify/';
     return a;
   }
 

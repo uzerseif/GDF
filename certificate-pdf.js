@@ -125,7 +125,7 @@
     body.append(intro, frame, grid);
 
     /* footer */
-    var link = new URL('certificate.html', location.href);
+    var link = new URL('certificate/', document.baseURI);
     link.searchParams.set('id', id);
     var foot = make('div', 'pdf-foot');
     var verify = make('div');

@@ -1,3 +1,6 @@
+GDF'27 website + Content Studio (CMS). Setup: see CMS-SETUP.md. Changes: CHANGES.md. Tests: TESTING.md.
+GitHub Pages clean routes (including /admin/): see the deployment instructions in CMS-SETUP.md.
+
 GDF'27 Certificate Verification System
 
 Files: verify.html, certificate.html, verify.css, verify-common.js, verify.js, certificate.js,

@@ -22,46 +22,50 @@
   </style>
   <script src="translations.js"></script>
   <script src="i18n.js"></script>
+  <script src="cms-config.js"></script>
+  <script src="cms-boot.js"></script>
   <script defer src="script.js"></script>
- </head>
+   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script defer src="cms-public.js"></script>
+</head>
  <body>
   <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to main content</a>
-  <header>
+  <header data-cms-section="global:header">
    <nav>
-    <a class="brand" href="index.html">
-     <img alt="GDF logo" src="images/logo.webp" data-i18n-attr="alt:alt.logo"/>
-     <span>
+    <a class="brand" href="./">
+     <img data-cms="header-logo" alt="GDF logo" src="images/logo.webp" data-i18n-attr="alt:alt.logo"/>
+     <span data-i18n="brand.name">
       GDF'27
      </span>
     </a>
     <ul class="nav-links">
      <li>
-      <a data-page="home" href="index.html" data-i18n="nav.home">
+      <a data-page="home" href="./" data-i18n="nav.home">
        Home
       </a>
      </li>
      <li>
-      <a data-page="applications" href="applications.html" data-i18n="nav.applications">
+      <a data-page="applications" href="applications/" data-i18n="nav.applications">
        Applications
       </a>
      </li>
      <li>
-      <a data-page="committees" href="committees.html" data-i18n="nav.committees">
+      <a data-page="committees" href="committees/" data-i18n="nav.committees">
        Committees
       </a>
      </li>
      <li>
-      <a data-page="about" href="about-us.html" data-i18n="nav.about">
+      <a data-page="about" href="about/" data-i18n="nav.about">
        About Us
       </a>
      </li>
      <li>
-      <a data-page="team" href="our-team.html" data-i18n="nav.team">
+      <a data-page="team" href="team/" data-i18n="nav.team">
        Our Team
       </a>
      </li>
      <li>
-      <a data-page="faq" href="faq.html" data-i18n="nav.faq">
+      <a data-page="faq" href="faq/" data-i18n="nav.faq">
        FAQ
       </a>
      </li>
@@ -97,32 +101,32 @@
    </nav>
    <ul class="mobile-menu" id="mobileMenu">
     <li>
-     <a data-page="home" href="index.html" data-i18n="nav.home">
+     <a data-page="home" href="./" data-i18n="nav.home">
       Home
      </a>
     </li>
     <li>
-     <a data-page="applications" href="applications.html" data-i18n="nav.applications">
+     <a data-page="applications" href="applications/" data-i18n="nav.applications">
       Applications
      </a>
     </li>
     <li>
-     <a data-page="committees" href="committees.html" data-i18n="nav.committees">
+     <a data-page="committees" href="committees/" data-i18n="nav.committees">
       Committees
      </a>
     </li>
     <li>
-     <a data-page="about" href="about-us.html" data-i18n="nav.about">
+     <a data-page="about" href="about/" data-i18n="nav.about">
       About Us
      </a>
     </li>
     <li>
-     <a data-page="team" href="our-team.html" data-i18n="nav.team">
+     <a data-page="team" href="team/" data-i18n="nav.team">
       Our Team
      </a>
     </li>
     <li>
-     <a data-page="faq" href="faq.html" data-i18n="nav.faq">
+     <a data-page="faq" href="faq/" data-i18n="nav.faq">
       FAQ
      </a>
     </li>
@@ -134,7 +138,7 @@
     <div class="nf-code" aria-hidden="true">404</div>
     <h1 data-i18n="nf.title">Page not found</h1>
     <p data-i18n="nf.text">The page you are looking for does not exist or may have been moved.</p>
-    <a class="nf-btn" href="index.html" data-i18n="nf.home">Back to Home</a>
+    <a class="nf-btn" href="./" data-i18n="nf.home">Back to Home</a>
    </div>
   </main>
  </body>

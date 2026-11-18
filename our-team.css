@@ -73,7 +73,13 @@ html[dir="rtl"] .tm-view::after { transform: scaleX(-1); }
 }
 .tm-gt::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--gold); flex: none; }
 .tm-gt::after { content: ""; height: 1px; flex: 1; max-width: 320px; background: var(--tm-line); }
-.tm-row { display: flex; flex-wrap: wrap; gap: var(--tm-g); }
+.tm-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--tm-g);
+    justify-content: center;
+    align-items: center;
+}
 .tm-row.is-center { justify-content: center; }
 
 /* ---------- Member card ---------- */

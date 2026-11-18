@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <base href="../"/>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>GDF'27 Content Studio</title>
+<link rel="icon" href="images/logo.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&family=Alexandria:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="admin.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="cms-config.js"></script>
+<script src="translations.js"></script>
+<script src="cms-defaults.js"></script>
+<script src="admin-i18n.js"></script>
+<script defer src="admin.js"></script>
+<script defer src="admin-pages.js"></script>
+</head>
+<body>
+<div class="boot" id="bootView"><div class="spinner"></div></div>
+
+<main class="login" id="loginView" hidden>
+  <form class="login-card" id="loginForm" novalidate>
+    <div class="login-brand"><img src="images/logo.webp" alt=""><div><strong data-t="app.title">GDF'27 Content Studio</strong><span data-t="app.subtitle">Website content management</span></div></div>
+    <h1 data-t="login.title">Sign in to the CMS</h1>
+    <p class="muted" data-t="login.text">Use your administrator account.</p>
+    <label><span data-t="login.email">Email</span><input type="email" name="email" autocomplete="username" required></label>
+    <label><span data-t="login.password">Password</span><input type="password" name="password" autocomplete="current-password" required></label>
+    <p class="form-error" id="loginError" role="alert" hidden></p>
+    <button class="btn btn-gold btn-block" type="submit" data-t="login.submit">Sign in</button>
+    <div class="lang-pills" data-admin-lang></div>
+  </form>
+</main>
+
+<div class="app" id="appView" hidden>
+  <aside class="sidebar" id="sidebar">
+    <div class="side-brand"><img src="images/logo.webp" alt=""><div><strong>GDF'27</strong><span data-t="app.subtitle">Website content management</span></div></div>
+    <nav id="sideNav" aria-label="CMS"></nav>
+    <div class="side-foot"><div class="who" id="who"></div></div>
+  </aside>
+  <div class="side-backdrop" id="sideBackdrop"></div>
+  <div class="main">
+    <header class="topbar">
+      <button class="icon-btn menu-toggle" id="menuToggle" aria-label="Menu" type="button">☰</button>
+      <div class="crumbs"><h1 id="pageTitle"></h1><span class="dirty-badge" id="dirtyBadge" hidden data-t="msg.dirty">Unsaved changes</span></div>
+      <div class="top-actions">
+        <div class="lang-pills" data-admin-lang title="Interface language"></div>
+        <button class="btn btn-ghost" id="previewToggle" type="button" hidden><span aria-hidden="true">◧</span> <span data-t="top.preview">Live preview</span></button>
+        <a class="btn btn-ghost" href="./" target="_blank" rel="noopener"><span aria-hidden="true">↗</span> <span data-t="top.view">View website</span></a>
+        <button class="btn btn-ghost" id="logoutBtn" type="button" data-t="top.logout">Log out</button>
+      </div>
+    </header>
+    <div class="banner" id="banner" hidden></div>
+    <div class="workspace">
+      <section class="view" id="view" tabindex="-1"></section>
+      <aside class="preview" id="preview" hidden>
+        <div class="preview-bar"><span data-t="top.preview">Live preview</span><div class="preview-tools"><button type="button" class="chip" data-pv-lang="en">EN</button><button type="button" class="chip" data-pv-lang="ar">AR</button><button type="button" class="chip" data-pv-lang="tr">TR</button><button type="button" class="icon-btn" id="previewReload" aria-label="Reload">↻</button><button type="button" class="icon-btn" id="previewClose" aria-label="Close">✕</button></div></div>
+        <iframe id="previewFrame" title="Preview"></iframe>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<div class="modal-root" id="modalRoot"></div>
+<div class="toasts" id="toasts" aria-live="polite"></div>
+</body>
+</html>

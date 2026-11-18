@@ -1,0 +1,9 @@
+GDF'27 CONTENT STUDIO
+=====================
+The full setup and deployment guide is in CMS-SETUP.md.
+
+Quick start:
+1. Supabase > SQL Editor: run cms-migration-v4.sql (safe to run more than once).
+2. Create an Auth user, then insert it into public.admin_users with role 'admin'.
+3. Turn off public sign-ups. Deploy the whole folder. Open /admin/.
+Never put a service_role/secret key in the frontend.

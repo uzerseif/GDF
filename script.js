@@ -66,8 +66,14 @@
 
   if (cells.length < 4) return;
 
-  /* MARCH 20, 2027, at 09:00 GMT+3. */
-  var target = new Date('2027-03-20T09:00:00+03:00').getTime();
+  /* Default: MARCH 20, 2027, at 09:00 GMT+3. The CMS (site_settings "event.start") overrides it. */
+  var DEFAULT_START = '2027-03-20T09:00:00+03:00';
+  function parseStart(v) {
+    var t = new Date(v || DEFAULT_START).getTime();
+    return isNaN(t) ? new Date(DEFAULT_START).getTime() : t;
+  }
+  var target = parseStart(window.GDF_EVENT_START);
+  document.addEventListener('gdf:eventstart', function (e) { target = parseStart(e.detail); tick(); });
 
   function pad(value) {
     return String(value).padStart(2, '0');

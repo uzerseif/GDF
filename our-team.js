@@ -19,6 +19,11 @@
 
   var tabs = [].slice.call(tabsEl.querySelectorAll(".tm-tab"));
   var panels = [].slice.call(document.querySelectorAll(".tm-panel"));
+  /* cms-public.js may rebuild the tabs/panels from the CMS; re-read them afterwards. */
+  function collect() {
+    tabs = [].slice.call(tabsEl.querySelectorAll(".tm-tab"));
+    panels = [].slice.call(document.querySelectorAll(".tm-panel"));
+  }
 
   /* ================= 1. التبويبات ================= */
 
@@ -155,9 +160,19 @@
   /* ================= 4. البداية ================= */
   [].forEach.call(document.querySelectorAll(".tm-photo"), removeBrokenImg);
 
-  var h = location.hash.slice(1);
-  var start = tabs.some(function (t) { return t.dataset.tab === h; }) ? h : tabs[0].dataset.tab;
-  show(start, true);
+  function startTab() {
+    if (!tabs.length) return;
+    var h = location.hash.slice(1);
+    var keep = current && tabs.some(function (t) { return t.dataset.tab === current; }) ? current : null;
+    var start = keep || (tabs.some(function (t) { return t.dataset.tab === h; }) ? h : tabs[0].dataset.tab);
+    show(start, true);
+  }
+  startTab();
+  document.addEventListener("gdf:team-rendered", function () {
+    collect();
+    [].forEach.call(document.querySelectorAll(".tm-photo"), removeBrokenImg);
+    startTab();
+  });
 
   /* رابط الصفحة النشط في القائمة (احتياطي؛ script.js يفعله أيضاً) */
   document.addEventListener("DOMContentLoaded", function () {
